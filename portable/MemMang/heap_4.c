@@ -326,15 +326,15 @@ void vPortFree( void * pv )     //堆的释放
     {
         /* The memory being freed will have an BlockLink_t structure immediately
          * before it. */
-        puc -= xHeapStructSize;
+        puc -= xHeapStructSize;     //把指针从内存块移动到 BlockLink_t 结构体的首地址
 
         /* This casting is to keep the compiler from issuing warnings. */
         pxLink = ( void * ) puc;
 
-        configASSERT( heapBLOCK_IS_ALLOCATED( pxLink ) != 0 );
-        configASSERT( pxLink->pxNextFreeBlock == NULL );
+        configASSERT( heapBLOCK_IS_ALLOCATED( pxLink ) != 0 );  //对要释放的内存块断言  --> 分配属性
+        configASSERT( pxLink->pxNextFreeBlock == NULL );                               // --> 是否位于链表中
 
-        if( heapBLOCK_IS_ALLOCATED( pxLink ) != 0 )
+        if( heapBLOCK_IS_ALLOCATED( pxLink ) != 0 )     //分配标志没有置位的
         {
             if( pxLink->pxNextFreeBlock == NULL )
             {
