@@ -62,7 +62,7 @@
 #endif
 
 #ifndef configHEAP_CLEAR_MEMORY_ON_FREE
-    #define configHEAP_CLEAR_MEMORY_ON_FREE    0    //当堆被释放后,是否清除内容 0:不清楚;1:清除,内容会被写0
+    #define configHEAP_CLEAR_MEMORY_ON_FREE    0    //当堆被释放后,是否清除内容 0:不清除;1:清除,内容会被写0
 #endif
 
 /* A few bytes might be lost to byte aligning the heap start address. */
